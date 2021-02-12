@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FlyReplay.ResourceDictionaries">
     <FontFamily x:Key="Inter">/Resources/Fonts/#Inter</FontFamily>
-    <FontFamily x:Key="InterLight">/Resources/Fonts/#Inter ExtraLight</FontFamily>
+    <FontFamily x:Key="InterLight">/Resources/Fonts/#Inter Light</FontFamily>
     <FontFamily x:Key="InterBold">/Resources/Fonts/#Inter Bold</FontFamily>
+    <FontFamily x:Key="InterExtraLight">/Resources/Fonts/#Inter Extra Light</FontFamily>
 </ResourceDictionary>

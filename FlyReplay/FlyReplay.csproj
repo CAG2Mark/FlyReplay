@@ -7,8 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\Inter-Bold.otf" />
+    <None Remove="Resources\Fonts\Inter-ExtraLight.otf" />
+    <None Remove="Resources\Fonts\Inter-Light.otf" />
+    <None Remove="Resources\Fonts\Inter-Regular.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="CustomControls\" />
     <Folder Include="Replay\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\Inter-Bold.otf" />
+    <Resource Include="Resources\Fonts\Inter-ExtraLight.otf" />
+    <Resource Include="Resources\Fonts\Inter-Light.otf" />
+    <Resource Include="Resources\Fonts\Inter-Regular.otf" />
   </ItemGroup>
 
 </Project>

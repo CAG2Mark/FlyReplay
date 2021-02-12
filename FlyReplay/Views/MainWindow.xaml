@@ -5,8 +5,179 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlyReplay"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock FontFamily="{StaticResource Inter}" FontSize="16">Hello world</TextBlock>
+        AllowsTransparency="False"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        Height="720" Width="1280" Background="#414042"
+        Style="{StaticResource WindowStyle}">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="5" GlassFrameThickness="0,0.1,0,0" CaptionHeight="40"/>
+    </WindowChrome.WindowChrome>
+    
+    <Grid x:Name="MainGrid" Background="{StaticResource DarkGray0}">
+
+        <Grid.Style>
+            <Style>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" Value="Maximized">
+                        <Setter Property="FrameworkElement.Margin" Value="7"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="TitleBar" Grid.Row="0">
+            <Grid.Resources>
+
+                <Brush x:Key="TitleGray">#FF2B2B2B</Brush>
+                <Brush x:Key="TitleHoverGray">#FF383838</Brush>
+                <Brush x:Key="TitleClickGray">#FF474646</Brush>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36px"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel x:Name="TopNavBar" Grid.Column="0">
+                    <DockPanel.Resources>
+
+
+
+                        <Brush x:Key="TitleTextGray">#FF939393</Brush>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="{x:Null}"/>
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+                            <Setter Property="Margin" Value="7,0,7,-1"/>
+                            <Setter Property="Height" Value="24"/>
+                            <Setter Property="Foreground" Value="{StaticResource TitleTextGray}"/>
+                            <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="5" x:Name="Bd" Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <!--Setter Property="Background" Value="{StaticResource titleHoverGray}"/-->
+                                    <Setter Property="Foreground" Value="#ffc6c6c6"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+
+                    </DockPanel.Resources>
+
+                    <DockPanel.Background>
+                        <StaticResource ResourceKey="TitleGray"/>
+                    </DockPanel.Background>
+
+                    <TextBlock VerticalAlignment="Center" Margin="16 0 16 0" FontFamily="{DynamicResource Inter}">FlyReplay</TextBlock>
+
+                    <!--
+                        <Button x:Name="DashboardButton" Content="Dashboard" Click="DashboardSet" Foreground="White"/>
+                        <Button x:Name="OverlayButton" Content="Overlay" Click="OverlaySet"/>
+                        <Button x:Name="SettingsButton" Content="Settings" Click="SettingsSet"/>
+                        -->
+
+                    <ListBox SelectedIndex="0" x:Name="TabControlListBox" Margin="0 2 0 0"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="Transparent" BorderThickness="0" VerticalAlignment="Center">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel VerticalAlignment="Center" IsItemsHost="True" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"></Setter>
+                                <Setter Property="Foreground" Value="#50FFFFFF"></Setter>
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <ContentPresenter Margin="6 0 6 0"></ContentPresenter>
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Foreground" Value="#99FFFFFF"></Setter>
+                                                </Trigger>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Foreground" Value="#FFFFFF"></Setter>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+
+
+                            </Style>
+                        </ListBox.Resources>
+
+                        <ListBoxItem>Home</ListBoxItem>
+                        <ListBoxItem>Replay</ListBoxItem>
+                        <ListBoxItem>Settings</ListBoxItem>
+                    </ListBox>
+
+                </DockPanel>
+                <DockPanel Grid.Row="0" HorizontalAlignment="Right" Grid.Column="1">
+                    <DockPanel.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="{x:Null}"/>
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                            <Setter Property="Width" Value="28px"/>
+                            <Setter Property="Height" Value="28px"/>
+                            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+                            <Setter Property="Background" Value="Transparent"></Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="5" x:Name="Bd" Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource TitleHoverGray}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource TitleClickGray}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DockPanel.Resources>
+                    <DockPanel.Background>
+                        <StaticResource ResourceKey="TitleGray"/>
+                    </DockPanel.Background>
+                    <Button Margin="4,0,0,0">
+                        <Path Data="{StaticResource MinimizeIcon}"></Path>
+                    </Button>
+                    <Button Margin="4,0,0,0">
+                        <Path Data="{StaticResource MaximizeIcon}"></Path>
+                    </Button>
+                    <Button Margin="4,0,4,0">
+                        <Path Data="{StaticResource CloseIcon}"></Path>
+                    </Button>
+                </DockPanel>
+            </Grid>
+            <Canvas Background="#BE1E2D" Grid.Row="1"/>
+        </Grid>
     </Grid>
 </Window>

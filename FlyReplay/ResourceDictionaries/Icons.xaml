@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FlyReplay.ResourceDictionaries">
+
+    <PathGeometry x:Key="CloseIcon">
+        M121.74,95.58,191.16,165,165,191.16,95.58,121.74,26.16,191.16,0,165,69.42,95.58,0,26.16,26.16,0,95.58,69.42,165,0l26.16,26.16Z
+    </PathGeometry>
+    <PathGeometry x:Key="MaximizeIcon">
+        M246.5,188.05H0V0H246.5ZM39,149.05H207.5V39H39Z
+    </PathGeometry>
+    <PathGeometry x:Key="MinimizeIcon">
+        M230.5,39H0V0H230.5Z
+    </PathGeometry>
+</ResourceDictionary>
