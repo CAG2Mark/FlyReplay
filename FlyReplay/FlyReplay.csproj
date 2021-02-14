@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,10 +20,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="FSUIPCClient">
+      <HintPath>C:\CAG2 Software\FlyLive Studio\FSUIPCClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.FlightSimulator.SimConnect">
+      <HintPath>C:\MSFS SDK\SimConnect SDK\lib\managed\Microsoft.FlightSimulator.SimConnect.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\Fonts\Inter-Bold.otf" />
     <Resource Include="Resources\Fonts\Inter-ExtraLight.otf" />
     <Resource Include="Resources\Fonts\Inter-Light.otf" />
     <Resource Include="Resources\Fonts\Inter-Regular.otf" />
   </ItemGroup>
+  
 
 </Project>
