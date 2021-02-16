@@ -8,14 +8,15 @@
         AllowsTransparency="False"
         ResizeMode="CanResize"
         WindowStartupLocation="CenterScreen"
-        Height="720" Width="1280" Background="#414042"
-        Style="{StaticResource WindowStyle}">
+        Height="720" Width="1280" Background="{StaticResource DarkGray1}"
+        Style="{StaticResource WindowStyle}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
     
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="5" GlassFrameThickness="0,0.1,0,0" CaptionHeight="40"/>
     </WindowChrome.WindowChrome>
     
-    <Grid x:Name="MainGrid" Background="{StaticResource DarkGray0}">
+    <Grid x:Name="MainGrid">
 
         <Grid.Style>
             <Style>
@@ -166,18 +167,29 @@
                     <DockPanel.Background>
                         <StaticResource ResourceKey="TitleGray"/>
                     </DockPanel.Background>
-                    <Button Margin="4,0,0,0">
-                        <Path Data="{StaticResource MinimizeIcon}"></Path>
+                    <Button Margin="4,0,0,0" Click="MinimizePressed">
+                        <Path Data="{StaticResource MinimizeIcon}" Margin="6 14 6 6"></Path>
                     </Button>
-                    <Button Margin="4,0,0,0">
-                        <Path Data="{StaticResource MaximizeIcon}"></Path>
+                    <Button Margin="4,0,0,0" Click="MaximizePressed">
+                        <Path Data="{StaticResource MaximizeIcon}" Margin="6"></Path>
                     </Button>
-                    <Button Margin="4,0,4,0">
+                    <Button Margin="4,0,4,0" Click="ClosePressed">
                         <Path Data="{StaticResource CloseIcon}"></Path>
                     </Button>
                 </DockPanel>
             </Grid>
             <Canvas Background="#BE1E2D" Grid.Row="1"/>
+        </Grid>
+
+        <Grid Grid.Row="2" x:Name="MainAreaGrid">
+            <StackPanel Margin="16">
+                <Button Margin="4" Click="Button_Click">Connect</Button>
+                <Button Margin="4" Click="Button_Click_1">Disconnect</Button>
+                <Button Margin="4" Click="Button_Click_2">Update Data</Button>
+                <Button Margin="4" Click="Button_Click_3">Set Data</Button>
+                <TextBox Text="{Binding simState.Altitude.Value}"></TextBox>
+                <TextBox Text="{Binding simState.GndSpeed.Value}"></TextBox>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>

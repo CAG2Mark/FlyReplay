@@ -12,10 +12,15 @@
     <Brush x:Key="LightGray1">#FF414141</Brush>
     <Brush x:Key="LightGray2">#FF454545</Brush>
     <Brush x:Key="BorderColor">#515151</Brush>
-    <Color x:Key="BorderColo">#515151</Color>
     <Brush x:Key="BorderHoverColor">#626262</Brush>
     <Brush x:Key="BorderSelectedColor">#7A7A7A</Brush>
     <Brush x:Key="Light">#595959</Brush>
     <Brush x:Key="Light1">#5F5F5F</Brush>
     <SolidColorBrush x:Key="FancyRed">#A3000A</SolidColorBrush>
+
+    <Brush x:Key="ButtonHover0">#0CFFFFFF</Brush>
+    <Brush x:Key="ButtonHover1">#13FFFFFF</Brush>
+    <Brush x:Key="ButtonHover2">#1AFFFFFF</Brush>
+
+    <Brush x:Key="TextBoxColor">#0C000000</Brush>
 </ResourceDictionary>
